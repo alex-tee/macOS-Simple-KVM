@@ -65,7 +65,11 @@ class Filesystem:
 
 class SoftwareService:
     # macOS 10.15 is available in 4 different catalogs from SoftwareScan
+    # https://github.com/zhangyoufu/swscan.apple.com/blob/master/url.txt
     catalogs = {
+                "12": {
+                    "PublicRelease":"https://swscan.apple.com/content/catalogs/others/index-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog",
+                        },
                 "10.15": {
                     "CustomerSeed":"https://swscan.apple.com/content/catalogs/others/index-10.15customerseed-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog",
                     "DeveloperSeed":"https://swscan.apple.com/content/catalogs/others/index-10.15seed-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog",
@@ -130,7 +134,7 @@ class MacOSProduct:
 
 @click.command()
 @click.option('-o', '--output-dir', default="BaseSystem/", help="Target directory for package output.")
-@click.option('-v', '--catalog-version', default="10.15", help="Version of catalog.")
+@click.option('-v', '--catalog-version', default="12", help="Version of catalog.")
 @click.option('-c', '--catalog-id', default="PublicRelease", help="Name of catalog.")
 @click.option('-p', '--product-id', default="", help="Product ID (as seen in SoftwareUpdate).")
 def fetchmacos(output_dir="BaseSystem/", catalog_version="10.15", catalog_id="PublicRelease", product_id=""):
